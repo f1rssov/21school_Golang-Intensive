@@ -15,7 +15,7 @@ func Start(){
 	var filename string
 	
 	if *Flags.F{
-		if len(flag.Args()) < 1 && len(flag.Args()) > 1{
+		if len(flag.Args()) < 1 || len(flag.Args()) > 1{
 			log.Fatalln("\nUsage:\n\t-f file_name.xml\nor:\n\t-f file_name.json")
 		}
 		filename = flag.Args()[0]
