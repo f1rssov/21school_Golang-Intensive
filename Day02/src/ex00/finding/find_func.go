@@ -11,7 +11,12 @@ import (
 func Find(mypath string, flags Flags){
 
 	err := filepath.Walk(mypath, func(path string, info os.FileInfo, err error) error {
-		if mypath != path{
+			if os.IsPermission(err){
+				return filepath.SkipDir
+			} else if err !=nil{
+				fmt.Println(err)
+				return err
+			}
 			if *flags.Dir && info.IsDir(){
 				fmt.Println("/"+path)
 			}
@@ -45,7 +50,6 @@ func Find(mypath string, flags Flags){
 					fmt.Println("/"+path)
 				}
 			}
-		}
 		return nil
 	})
 	if err != nil{

@@ -18,7 +18,7 @@ func main(){
 			fmt.Println("ERROR: -ext (Check args)")
 			return
 		}
-		mainPath:="."+args[0]
+		mainPath:=args[0]
 		my.Find(mainPath, *Flags)
 	}else{
 		fmt.Println("Usage:\n\tgo run <main.go> /<dir_name> ")
